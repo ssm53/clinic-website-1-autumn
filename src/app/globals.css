@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-global {
+    background-color: #003366;
+}
+
+
+.text-global {
+    background-color: #003366;
+
+}
