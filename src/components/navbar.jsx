@@ -19,7 +19,28 @@ import Logo from "../../public/svgs/Logo.svg";
 
 const NavbarComponent = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const menuItems = ["Home", "Services", "Our Team", "Contact Us", "FAQs"];
+  const menuItems = [
+    {
+      name: "Home",
+      to: "home",
+    },
+    {
+      name: "Services",
+      to: "services",
+    },
+    {
+      name: "Our Team",
+      to: "ourteam",
+    },
+    {
+      name: "Contact Us",
+      to: "contactus",
+    },
+    {
+      name: "FAQs",
+      to: "faqs",
+    },
+  ];
   const [currentPath, setCurrentPath] = useState("");
 
   useEffect(() => {
@@ -29,9 +50,14 @@ const NavbarComponent = () => {
     }
   }, []);
 
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <StyledNavbar
       onMenuOpenChange={setIsMenuOpen}
+      isMenuOpen={isMenuOpen}
       maxWidth="full"
       justify="center"
       style={{
@@ -130,10 +156,10 @@ const NavbarComponent = () => {
         </StyledCustomNavItem>
       </motion.NavbarContent>
 
-      <MobNavbarMenu>
+      <MobNavbarMenu isOpen={isMenuOpen}>
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
+          <NavbarMenuItem key={`${item.name}-${index}`}>
+            <ScrollLink
               color={
                 index === 0
                   ? "primary"
@@ -142,11 +168,13 @@ const NavbarComponent = () => {
                   : "foreground"
               }
               className="w-full mob-link"
-              href="#"
+              to={item.to}
               size="lg"
+              smooth={true}
+              onClick={handleLinkClick}
             >
-              {item}
-            </Link>
+              {item.name}
+            </ScrollLink>
           </NavbarMenuItem>
         ))}
       </MobNavbarMenu>
