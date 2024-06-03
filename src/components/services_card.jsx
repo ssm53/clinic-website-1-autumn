@@ -23,7 +23,7 @@ const ServiceCard = ({ icon, header, body, id }) => {
   return (
     <motion.div
       ref={ref}
-      className="py-7 my-1"
+      className=" my-1"
       initial={{ opacity: 0, y: 100 }}
       animate={controls}
       transition={{ duration: 1 }}
@@ -35,7 +35,7 @@ const ServiceCard = ({ icon, header, body, id }) => {
       <StyledCard className=" p-7 my-1" fullWidth>
         <StyledCardHeader className="flex flex-col justify-center items-center">
           {icon}
-          <StyledHeading>{header}</StyledHeading>
+          <StyledHeading className="text-center">{header}</StyledHeading>
         </StyledCardHeader>
         <CardBody className="text-center">
           <p>{body}</p>
